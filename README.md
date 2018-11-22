@@ -1,3 +1,3 @@
 # FlaskStudy
-Study flask from http://www.pythondoc.com/flask-mega-tutorial/index.html
+Study flask from http://blog.csdn.net/jmilk https://blog.csdn.net/Jmilk/article/details/53152158 
 
