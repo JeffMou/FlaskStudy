@@ -1,14 +1,18 @@
 # -*- coding: UTF-8 -*-
 # import Flask Script object
 from flask_script import Manager, Server
-import main
-import models
+from flask_migrate import Migrate, MigrateCommand
+from jmilkfansblog import models, app
 
 # Init manager object via app object
-manager = Manager(main.app)
+manager = Manager(app)
+
+# Init migrate object via app and db object
+migrate = Migrate(app, models.db)
 
 # Create some new commands
 manager.add_command("server", Server())
+manager.add_command("db", MigrateCommand)
 
 @manager.shell
 def make_shell_context():
@@ -17,7 +21,7 @@ def make_shell_context():
     return: Default import object
     type: `Dict`
     """
-    return dict(app=main.app,
+    return dict(app=app,
                 db=models.db,
                 User=models.User,
                 Post=models.Post,
